@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Panterest' %}
+
+{% block body %}
+{# pluralize est une fonction twig que nous avons créé dispo dans /src/Twig/pluralizeExtension.php #}
+{#elle prend 3 arguments(int, str, str[optionael]#}
+<h1>Vous avez {{pluralize(pans|length, 'Pan')}} !</h1>
+{% for pan in pans %}
+    <article>
+        <h2>{{pan.title}}</h2>
+        <p>{{pan.description}}</p>
+    </article>
+{% endfor %}
+{% endblock %}

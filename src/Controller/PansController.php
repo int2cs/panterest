@@ -1,0 +1,23 @@
+<?php
+
+namespace App\Controller;
+
+use App\Repository\PanRepository;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
+
+class PansController extends AbstractController
+{
+    /**
+     * @Route("/", name="app_home")
+     */
+    public function index(PanRepository $panRepository): Response
+    {
+        $pans = $panRepository->findAll();
+        // la fonction compact() permet de "compacter" notre code
+        //C'est plus rapide que de passer les variable comme ceci : ['pans' => $pans]
+        return $this->render('pans/index.html.twig', compact('pans'));
+    }
+    
+}
