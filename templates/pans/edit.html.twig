@@ -1,11 +1,10 @@
-{% extends 'base.html.twig' %}
+{% extends 'layout/base.html.twig' %}
 
 {% block title 'Panterest - Edition Pan #' ~ pan.id %}
 
 {% block body %}
 <h1>Edition du Pan N° {{pan.id}}</h1>
-  {{form_start(form)}}
-    {{form_widget(form)}}
-    <button type="submit">Enregistrer</button>
-  {{form_end(form)}}
+
+{{include('pans/partials/_form.html.twig', {submitBtnTxt: 'Editer'})}}
+
 {% endblock %}

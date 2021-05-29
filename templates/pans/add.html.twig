@@ -1,12 +1,10 @@
-{% extends "base.html.twig" %}
+{% extends "layout/base.html.twig" %}
 
 {% block title 'Nouveau Pan' %}
 
 {% block body %}
   <h1>Créer un nouveau Pan</h1>
   
-  {{form_start(form)}}
-    {{form_widget(form)}}
-      <button type="submit">Créer !</button>
-  {{form_end(form)}}
+{{include('pans//partials/_form.html.twig', {submitBtnTxt: 'Ajouter'})}}
+
 {% endblock %}

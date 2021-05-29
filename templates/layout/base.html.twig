@@ -16,6 +16,15 @@
             <li><a href="{{path('app_pans_add')}}">Nouveau</a></li>
         </ul>
     </nav>
+    {% block flashes %}
+        {% for typr, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="alerte alerte-{{type}}">{{message}}</div>                
+            {% endfor %}
+            
+        {% endfor %}
+    {% endblock %}
+
         {% block body %}{% endblock %}
 
 

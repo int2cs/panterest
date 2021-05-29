@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Entity\Traits\Timestampable;
 use App\Repository\PanRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=PanRepository::class)
@@ -24,11 +25,16 @@ class Pan
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Veuillez renseigner un titre.")
+     * @Assert\Length(min=3, minMessage="Un titre doit contenir plus de 3 caractères.")
      */
     private $title;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank(message="Veuillez renseigner une description.")
+     * @Assert\Length(min=10, minMessage="Une description doit contenir plus de 3 caractères."))
+     * 
      */
     private $description;
 

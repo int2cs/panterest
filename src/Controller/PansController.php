@@ -28,7 +28,7 @@ class PansController extends AbstractController
     }
     
     /**
-     * @Route("/show/{id<[0-9+]>}", name="app_pans_show", methods={"GET"})
+     * @Route("/pans/{id<[0-9+]>}", name="app_pans_show", methods={"GET"})
      */
     public function show(Pan $pan): Response
     {
@@ -52,6 +52,8 @@ class PansController extends AbstractController
                 $em->persist($data);
                 $em->flush();
 
+                $this->addFlash('success', 'Ajout effectué avec succès');
+
                 return $this->redirectToRoute('app_home');
             }
 
@@ -74,6 +76,8 @@ class PansController extends AbstractController
                     if($form->isSubmitted() && $form->isValid()){
                         $em->flush();
 
+                        $this->addFlash('success', 'Modification effectué avec succès');
+
                         return $this->redirectToRoute('app_home');
                     }
 
@@ -83,15 +87,17 @@ class PansController extends AbstractController
         ]);
     }
      /**
-     * @Route("/pans/delete/{id<[0-9+]>}", name="app_pans_delete", methods={"DELETE"})
+     * @Route("/pans/{id<[0-9+]>}", name="app_pans_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Pan $pan, EntityManagerInterface $em): Response
     {
         $token = $request->request->get('csrf_token');
-        dd($token);
         if($this->isCsrfTokenValid('pan_delete_' . $pan->getId(), $token))
         $em->remove($pan);
         $em->flush();
+
+        $this->addFlash('info', 'Suppression effectué avec succès');
+
         return $this->redirectToRoute('app_home');
     }
 }
