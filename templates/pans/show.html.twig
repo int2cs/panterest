@@ -5,11 +5,7 @@
 {% block body %}
 {# pluralize est une fonction twig que nous avons créé dispo dans /src/Twig/pluralizeExtension.php #}
 {#elle prend 3 arguments(int, str, str[optionael]#}
-<h1>Vous avez {{pluralize(pans|length, 'Pan')}} !</h1>
-{% for pan in pans %}
-    <article>
-        <h2><a href="{{path('app_pans_show', {id: pan.id})}}">{{pan.title}}</a></h2>
-        <p>{{pan.description}}</p>
-    </article>
-{% endfor %}
+<h1>{{pan.title}}</h1>
+<p>{{pan.description}}</p>
+<a href="{{ path('app_home') }}">Accueil</a>
 {% endblock %}

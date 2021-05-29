@@ -27,7 +27,8 @@ class PluralizeExtension extends AbstractExtension
 
     public function doSomething(int $count, string $singular, ?string $plural = null): string
     {
-        //si $plural est définit alor sil prendra sa valeur sinon on lui donne la valeur de $singular et on concatène un "s"
+        //si $plural est définit et n'est pas null alors il prendra sa valeur 
+        //sinon on lui donne la valeur de $singular et on concatène un "s"
         $plural ??= $singular . 's';
         $str = $count <= 1 ? $singular : $plural;
         return "$count $str";
