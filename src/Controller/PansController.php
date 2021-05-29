@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Pan;
+use App\Form\PanType;
 use App\Repository\PanRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -39,10 +40,7 @@ class PansController extends AbstractController
      */
     public function add(Request $request, EntityManagerInterface $em): Response
     {
-        $form = $this->createFormBuilder(new Pan)
-            ->add('title', TextType::class)
-            ->add('description', TextareaType::class)
-            ->getForm();
+        $form = $this->createForm(PanType::class, new Pan);
 
             //On récupère les infos passé dans la requête
             //pour les traiter directement sur le formulaire
@@ -63,14 +61,13 @@ class PansController extends AbstractController
     }
 
      /**
-     * @Route("/pans/edit/{id<[0-9+]>}", name="app_pans_edit", methods={"GET|POST"})
+     * @Route("/pans/edit/{id<[0-9+]>}", name="app_pans_edit", methods={"GET|PUT"})
      */
     public function update(Pan $pan, Request $request, EntityManagerInterface $em): Response
     {
-        $form = $this->createFormBuilder($pan)
-                    ->add('title', TextType::class)
-                    ->add('description', TextareaType::class)
-                    ->getForm();
+        $form = $this->createForm(PanType::class, $pan, [
+            'method' => 'PUT'
+        ]);
 
                     $form->handleRequest($request);
 
