@@ -82,4 +82,13 @@ class PansController extends AbstractController
             'form' => $form->createView()
         ]);
     }
+     /**
+     * @Route("/pans/delete/{id<[0-9+]>}", name="app_pans_delete", methods={"DELETE"})
+     */
+    public function delete(Pan $pan, EntityManagerInterface $em): Response
+    {
+        $em->remove($pan);
+        $em->flush();
+        return $this->redirectToRoute('app_home');
+    }
 }
