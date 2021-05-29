@@ -10,7 +10,7 @@
     <article>
         <h2><a href="{{path('app_pans_show', {id: pan.id})}}">{{pan.title}}</a></h2>
         <p>{{pan.description|u.truncate(50, '...', false)}}</p>
-        <p class="small-text">il y à : {{pan.createdAt|ago}}</p>
+        <p class="text-muted">il y à : {{pan.createdAt|ago}}</p>
     </article>
 {% endfor %}
 {% endblock %}

@@ -28,7 +28,7 @@ class PansController extends AbstractController
     }
     
     /**
-     * @Route("/pans/{id<[0-9+]>}", name="app_pans_show", methods={"GET"})
+     * @Route("/pans/{id<[0-9]+>}", name="app_pans_show", methods={"GET"})
      */
     public function show(Pan $pan): Response
     {
@@ -63,7 +63,7 @@ class PansController extends AbstractController
     }
 
      /**
-     * @Route("/pans/edit/{id<[0-9+]>}", name="app_pans_edit", methods={"GET|PUT"})
+     * @Route("/pans/edit/{id<[0-9]+>}", name="app_pans_edit", methods={"GET|PUT"})
      */
     public function update(Pan $pan, Request $request, EntityManagerInterface $em): Response
     {
@@ -87,7 +87,7 @@ class PansController extends AbstractController
         ]);
     }
      /**
-     * @Route("/pans/{id<[0-9+]>}", name="app_pans_delete", methods={"DELETE"})
+     * @Route("/pans/{id<[0-9]+>}", name="app_pans_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Pan $pan, EntityManagerInterface $em): Response
     {

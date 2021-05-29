@@ -3,8 +3,13 @@
 {% block title 'Nouveau Pan' %}
 
 {% block body %}
-  <h1>Créer un nouveau Pan</h1>
   
+  <div class="row">
+    <div class="col-md-6 m-auto">
+  <h1>Créer un nouveau Pan</h1>
 {{include('pans//partials/_form.html.twig', {submitBtnTxt: 'Ajouter'})}}
+    
+    </div>
+  </div>
 
 {% endblock %}
