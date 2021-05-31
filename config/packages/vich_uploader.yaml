@@ -3,7 +3,7 @@ vich_uploader:
 
     mappings:
         pan_image:
-            uri_prefix: /uploads/pans
+            uri_prefix: img/uploads/pans
             upload_destination: '%kernel.project_dir%/public/img/uploads/pans'
             namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
 

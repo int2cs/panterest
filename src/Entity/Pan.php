@@ -45,6 +45,12 @@ class Pan
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      * 
      * @Vich\UploadableField(mapping="pan_image", fileNameProperty="imageName")
+     * @Assert\Image(maxSize="8M", mimeTypes={
+                                            * "image/jpg", 
+                                            * "image/png", 
+                                            * "image/jpeg", 
+                                            * "image/gif"
+     * }, maxSizeMessage="Image trop volumineuse (8Mo Maximum)", mimeTypesMessage="Fichier non valide !")
      * 
      * @var File|null
      */

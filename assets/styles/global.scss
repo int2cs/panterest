@@ -17,6 +17,18 @@ a {
 }
 
 .article-pan {
+  .card {
+    width: 300px;
+  }
+  .card-body {
+    width: 300px;
+    padding: 0;
+    img {
+      height: 300px;
+      width: 296px;
+      object-fit: cover;
+    }
+  }
   .card-title {
     font-size: 70%;
   }
