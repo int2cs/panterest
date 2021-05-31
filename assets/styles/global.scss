@@ -1,0 +1,23 @@
+body {
+  background-color: rgb(221, 221, 221);
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+.container-flex {
+  max-width: 1020px;
+  margin: auto;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.article-pan {
+  .card-title {
+    font-size: 70%;
+  }
+}

@@ -6,11 +6,19 @@
 {# pluralize est une fonction twig que nous avons créé dispo dans /src/Twig/pluralizeExtension.php #}
 {#elle prend 3 arguments(int, str, str[optionael]#}
 <h1>Vous avez {{pluralize(pans|length, 'Pan')}} !</h1>
-{% for pan in pans %}
-    <article>
-        <h2><a href="{{path('app_pans_show', {id: pan.id})}}">{{pan.title}}</a></h2>
-        <p>{{pan.description|u.truncate(50, '...', false)}}</p>
-        <p class="text-muted">il y à : {{pan.createdAt|ago}}</p>
-    </article>
-{% endfor %}
+
+<div class="container-flex">
+    {% for pan in pans %}
+    <a href="{{path('app_pans_show', {id: pan.id})}}">
+        <article class="article-pan">
+            <div class="card border-primary mb-3" style="max-width: 20rem;">
+            <div class="card-header">{{pan.title}}</div>
+            <div class="card-body">
+                <h4 class="card-title text-muted">il y à : {{pan.createdAt|ago}}</h4>
+                <p class="card-text">{{pan.description|u.truncate(70, '...', false)}}</p>
+            </div>
+        </article>
+    </a>
+    {% endfor %}
+</div>
 {% endblock %}
