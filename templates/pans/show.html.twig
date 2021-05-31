@@ -3,17 +3,19 @@
 {% block title 'Panterest #' ~ pan.id %}
 
 {% block body %}
-{# pluralize est une fonction twig que nous avons créé dispo dans /src/Twig/pluralizeExtension.php #}
-{#elle prend 3 arguments(int, str, str[optionael]#}
-<h1>{{pan.title}}</h1>
-<p>{{pan.description}}</p>
-<a href="{{ path('app_pans_edit', {id: pan.id}) }}" class="btn btn-outline-success">Editer</a>
-<a href="#" id="btn_pan_delete" class="btn btn-outline-danger">Supprimer</a>
+  <h1>{{pan.title}}</h1>
 
-<form id="js_form_pan_delete" action="{{ path('app_pans_delete', {id: pan.id}) }}" method="post" style="display: none;">
-<input type="hidden" name="csrf_token" value="{{csrf_token('pan_delete_' ~ pan.id)}}">
-  <input type="hidden" name="_method" value="DELETE">
-</form>
+  <img src="{{(pan.imageName ? vich_uploader_asset(pan): asset('img/default.jpg')) | imagine_filter('squared_thumbnail_medium')}}" alt="{{pan.title}}">
+
+  <p>{{pan.description}}</p>
+  
+  <a href="{{ path('app_pans_edit', {id: pan.id}) }}" class="btn btn-outline-success">Editer</a>
+  <a href="#" id="btn_pan_delete" class="btn btn-outline-danger">Supprimer</a>
+
+  <form id="js_form_pan_delete" action="{{ path('app_pans_delete', {id: pan.id}) }}" method="post" style="display: none;">
+    <input type="hidden" name="csrf_token" value="{{csrf_token('pan_delete_' ~ pan.id)}}">
+    <input type="hidden" name="_method" value="DELETE">
+  </form>
 {% endblock %}
 
 {% block javascripts %}

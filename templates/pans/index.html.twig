@@ -12,11 +12,16 @@
     <a href="{{path('app_pans_show', {id: pan.id})}}">
         <article class="article-pan">
             <div class="card border-primary mb-3" style="max-width: 20rem;">
-            <div class="card-header">{{pan.title}}</div>
-            <div class="card-body">
-            <img src="{{pan.imageName ? vich_uploader_asset(pan): asset('img/default.jpg') | imagine_filter('squared_thumbnail_medium')}}" alt={{pan.title}}>
-                <h4 class="card-title text-muted">il y à : {{pan.createdAt|ago}}</h4>
-                <p class="card-text">{{pan.description|u.truncate(70, '...', false)}}</p>
+                <div class="card-header">{{pan.title}}</div>
+                <div class="card-body">
+                    <div class="card-image">
+                        <img src="{{(pan.imageName ? vich_uploader_asset(pan): asset('img/default.jpg')) | imagine_filter('squared_thumbnail_medium')}}" alt={{pan.title}}>
+                    </div>
+                    <div class="card-info">
+                        <h4 class="card-title text-muted">il y à : {{pan.createdAt|ago}}</h4>
+                        <p class="card-text">{{pan.description|u.truncate(70, '...', false)}}</p>
+                    </div>
+                </div>
             </div>
         </article>
     </a>

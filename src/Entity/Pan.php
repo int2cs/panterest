@@ -29,7 +29,7 @@ class Pan
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="Veuillez renseigner un titre.")
-     * @Assert\Length(min=3, minMessage="Un titre doit contenir plus de 3 caractères.")
+     * @Assert\Length(min=3, max="40", minMessage="Un titre doit contenir plus de 3 caractères.", maxMessage="Le titre ne peux contenir plus de 40 caractères.")
      */
     private $title;
 

@@ -1,7 +1,6 @@
-import "./styles/app.scss";
 import "./styles/bootstrap.min.css";
+import "./styles/app.scss";
 
-console.log("script chargé");
 const btn = document.querySelector("#btn_pan_delete");
 const form = document.querySelector("#js_form_pan_delete");
 
